@@ -11,24 +11,38 @@ int main (int argc, char** argv)
 		printf("ERROR: Not enough input arguements!\n");
 		return 0;
 	}
+	
+	// gets the operator and checks if the operator was valid
+	// in this implementation the only valid operators are - + *
+	
 	char * operator = (char*)malloc(strlen(argv[1]) + 1);
 	strcpy(operator, argv[1]);
 	operator[strlen(argv[1])] = '\0';
+
 	if (operator[1] != '\0' ||( operator[0] != '+' 
 		&& operator [0] != '-' && operator[0] != '*')) 
 	{
 		printf("ERROR: Invalid operator!\n");
 		return 0;
 	}
+
+	// get the first arg and copy it
 	char * input1 = (char*)malloc(strlen(argv[2])+1);
 	strcpy(input1, argv[2]);
+	// and second
 	char * input2 = (char*)malloc(strlen(argv[3])+1);
 	strcpy(input2, argv[3]);
+	// finally the base that the result will be output in
 	char * outBase = (char*)malloc(strlen(argv[4])+1);
 	strcpy(outBase, argv[4]);
+	
+	// flags will deterimine if the inputs are negative 0 for pos 1 for neg
 	int flag1 = 0, flag2 = 0;
+	
 	char * ref1 = input1;	//reference to full input
 	char * ref2 = input2;	//cleaves part off depending if '-'
+	// check if either input is negative to apply the right operation accordingly
+	
 	if (input1[0] == '-') 
 	{
 		flag1 = 1;
@@ -39,14 +53,21 @@ int main (int argc, char** argv)
 		flag2 = 1;
 		input2++;
 	} 
+
+	// error checking to see if the first arguement is not one of the specified 
+	// only d x o b are valid
+
 	if(strlen(outBase) > 1 || 
 	(outBase[0] != 'd' && outBase[0] != 'b' && outBase[0] != 'o' && outBase[0] != 'x')) 
 	{
-		printf("ERROR: Invalid output base!\n");
+		printf("ERROR: Invalid output base!\nThe only valid output bases are: d o b x\n%s was the output base that was detected\n", outBase);
+
 		return 0;
 	}
+
 	int check1 = checkValidInput(input1);
 	int check2 = checkValidInput(input2);
+	
 	if (!(check1 == 1 && check2 == 1)) 
 	{
 		switch(check1)

@@ -4,6 +4,12 @@
 #include <string.h>
 #include <math.h>
 
+
+/**
+	@param char * str, char c
+	prepends the character c to the string str
+	will only work on strings that have been dynamically allocated
+*/
 char * append(char * str, char c)
 {
 	int size = strlen(str);
@@ -19,6 +25,10 @@ char * append(char * str, char c)
 	return ret;
 }
 
+/**
+	@param int num
+	converts an integer to its string equivalent
+*/
 char * BinToDecStr(int num) 
 {
 	int temp = num;
@@ -339,6 +349,7 @@ int checkValidInput(char * str)
  *		a-f in decimal returns 2
  *		2-f in binary returns 2
  *		etc
+ *	Makes use of the ctype.h library functions
  */ 
 	char base = str[0];
 	if (base != 'b' && base != 'o' && base != 'x' && base != 'd') 
