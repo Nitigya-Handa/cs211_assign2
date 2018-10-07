@@ -39,7 +39,7 @@ int main (int argc, char** argv)
 	// flags will deterimine if the inputs are negative 0 for pos 1 for neg
 	int flag1 = 0, flag2 = 0;
 	
-	char * ref1 = input1;	//reference to full input
+	char * ref1 = input1;	//"reference to full input"
 	char * ref2 = input2;	//cleaves part off depending if '-'
 	// check if either input is negative to apply the right operation accordingly
 	
@@ -203,7 +203,7 @@ int main (int argc, char** argv)
 			{
 				output = append(output, '-');
 			}
-			printf("%s\n", output);
+			printf("%s \n", output);
 			break;
 		}
 		case 'x':
